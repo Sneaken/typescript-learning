@@ -7,6 +7,18 @@ type MyOmit2<T, K extends keyof T> = {
   [tk in Exclude<keyof T, K>]: T[tk];
 };
 
+// You can filter out keys by producing never via a conditional type:
+// Remove the 'kind' property
+type RemoveKindField<Type> = {
+  [Property in keyof Type as Exclude<Property, "kind">]: Type[Property];
+};
+
+interface Circle {
+  kind: "circle";
+  radius: number;
+}
+type KindLessCircle = RemoveKindField<Circle>;
+
 // 2. 从关联类型中排出指定类型
 type myExclude<T, K> = T extends K ? never : T;
 
