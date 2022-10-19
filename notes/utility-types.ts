@@ -23,6 +23,6 @@ type MyPartial<T> = {
 // 7. Required<Type>
 type MyRequired<T> = {
   // -? 很重要
-  // 迭代的时候会把原来的可选标记也带上 所以需要去掉
+  // 迭代的时候会把原来的修饰符也带上
   [P in keyof T]-?: T[P];
 };
