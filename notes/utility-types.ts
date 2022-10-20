@@ -26,3 +26,21 @@ type MyRequired<T> = {
   // 迭代的时候会把原来的修饰符也带上
   [P in keyof T]-?: T[P];
 };
+
+// 8. Readonly<Type>
+type MyReadonly<T> = {
+  readonly [P in keyof T]: T[P];
+};
+
+// 9. Record<Keys, Type>
+type MyRecord<K extends keyof any, T> = {
+  [P in K]: T;
+};
+
+// 10. Extract<Type, Union>
+type MyExtract<T, U> = T extends U ? T : never;
+
+// 11. NonNullable<Type>
+// 排除 null 和 undefined
+type MyNonNullable<T> = T & {}
+
