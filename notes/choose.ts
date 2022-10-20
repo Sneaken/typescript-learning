@@ -24,3 +24,10 @@ type myExclude<T, K> = T extends K ? never : T;
 
 declare var e1: myExclude<"a" | "b", "b" | "c">;
 declare var e2: Exclude<"a" | "b", "b" | "c">;
+
+// 数组
+// 1. 选择第一个
+type First<T extends unknown[]> = T extends [infer F, ...any] ? F : never;
+// First<[]> ==> never
+// 2. 选择最后一个
+type Last<T extends unknown[]> = T extends [...any, infer L] ? L : never;
